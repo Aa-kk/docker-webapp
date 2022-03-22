@@ -1,0 +1,14 @@
+Answers To Questions From The Assessment Task
+
+1. Asides Docker you can use tools such as Podman, Buildah(to build images), LXC.
+
+2) Some other infrastructure as code tools are cloudformation, pulumi, Google Cloud Deployment Manager, Azure Resource Manager, etc. I like the ease of creating and destroying infrastructure with terraform especially using terraform to destroy resources I would otherwise forget to delete on the console after a project. I also like that they provide a very detailed and easy to understand documentation. The reusability of modules also reduces the time it takes to deploy infrastructures. These points can be same with other infrastructure as code tools but Terraform stands out because it is declarative, cloud agnostic and has several providers. It also allows you to create your own providers for your special uses cases.
+I do not like the fact that you have to manage your state files. Although you can manage remotely like with s3 backend or locally, You will have issues if your state file gets corrupt. I also don't like that terraform stores secretes in plain text in the state file. 
+
+3. To perform this project on kubernetes instead of a local machine, first you'd need to;
+a) Create a Docker file
+b) Build a Docker image using our Docker file
+c) Push your Docker image to Docker hub
+d) Provision a Kubernetes cluster using terraform, this would depend on the infrastructure you use eg AWS, GCP, Azure
+e) Create a new terraform Kubernetes deployment template using terraform Kubernetes provider, at this stage you would also specify the configurations for the container ie image, name etc.
+f) Destroy resources using terraform destroy.
